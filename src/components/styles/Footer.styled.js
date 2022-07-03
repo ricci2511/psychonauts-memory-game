@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledFooter = styled.footer`
-    margin-top: 2rem;
+    position: absolute;
+    bottom: 0;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -9,9 +9,9 @@ const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        height: 100%;
+        position: relative;
+        min-height: 100vh;
         background-image: url(${waves});
-        aspect-ratio: 960/300;
         background-repeat: no-repeat;
         background-position: top;
         background-size: cover;
