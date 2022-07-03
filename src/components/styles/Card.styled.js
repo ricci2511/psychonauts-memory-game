@@ -9,7 +9,7 @@ export const StyledCard = styled.article`
     align-items: center;
     gap: 0.5rem;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 
     img {
         max-height: 220px;
@@ -23,5 +23,6 @@ export const StyledCard = styled.article`
 
     &:hover {
         transform: scale(1.02);
+        box-shadow: #00bbf1 0px 3px 18px 0px, #00bbf1 0px 0px 0px 1px;
     }
 `;
