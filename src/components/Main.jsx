@@ -1,22 +1,33 @@
 import React from 'react';
 import Card from './Card';
-import { StyledMain } from './styles/Main.styled';
+import {
+    CardsGrid,
+    ScoreBox,
+    ScoresWrapper,
+    StyledMain,
+} from './styles/Main.styled';
 
 const Main = () => {
     return (
         <StyledMain>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            <ScoresWrapper>
+                <ScoreBox>Score:</ScoreBox>
+                <ScoreBox>Best score:</ScoreBox>
+            </ScoresWrapper>
+            <CardsGrid>
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+            </CardsGrid>
         </StyledMain>
     );
 };
