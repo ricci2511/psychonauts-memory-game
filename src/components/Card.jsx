@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyledCard } from './styles/Card.styled';
-import cruller from '../assets/ford-cruller.png';
 
 const Card = ({ name, image }) => {
+    const altText = `Character ${name}`;
     return (
         <StyledCard>
-            <img src={image} alt="Character" />
+            <img src={image} alt={altText} />
             <p>{name}</p>
         </StyledCard>
     );
