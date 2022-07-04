@@ -6,7 +6,7 @@ const Card = ({ name, image, handleClick }) => {
     return (
         <StyledCard onClick={() => handleClick(name)}>
             <img src={image} alt={altText} />
-            <p>{name}</p>
+            <figcaption>{name}</figcaption>
         </StyledCard>
     );
 };

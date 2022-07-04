@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledCard = styled.article`
+export const StyledCard = styled.figure`
     background-color: rgba(0, 0, 0, 0.7);
     padding: 1rem 0rem;
     border-radius: 5px;
@@ -13,9 +13,10 @@ export const StyledCard = styled.article`
 
     img {
         max-height: 220px;
+        max-width: 150px;
     }
 
-    p {
+    figcaption {
         color: white;
         text-align: center;
         font-weight: 600;
