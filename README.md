@@ -1,4 +1,4 @@
-# psychonauts-memory-game
+# psychonauts-memory-game :brain:
 Simple memory card game to put your brain to the test!
 
 I might revisit this later and add different difficulties.
