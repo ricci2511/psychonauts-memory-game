@@ -10,6 +10,7 @@ export const StyledCard = styled.figure`
     gap: 0.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    animation: scale 500ms ease;
 
     img {
         max-height: 220px;
@@ -25,5 +26,15 @@ export const StyledCard = styled.figure`
     &:hover {
         transform: scale(1.02);
         box-shadow: #00bbf1 0px 3px 18px 0px, #00bbf1 0px 0px 0px 1px;
+    }
+
+    @keyframes scale {
+        0% {
+            transform: scale(0);
+        }
+
+        100% {
+            transform: scale(1);
+        }
     }
 `;
