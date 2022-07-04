@@ -7,7 +7,7 @@ export const StyledMain = styled.main`
     margin-top: 2.5rem;
 `;
 
-export const CardsGrid = styled.div`
+export const CardsGrid = styled.section`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 1fr;
@@ -27,7 +27,7 @@ export const CardsGrid = styled.div`
     }
 `;
 
-export const ScoresWrapper = styled.article`
+export const ScoresWrapper = styled.section`
     margin-top: 2rem;
     width: 100%;
     display: flex;

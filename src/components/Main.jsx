@@ -24,7 +24,6 @@ const Main = () => {
             try {
                 const characters = await fetchCharacters();
                 const charactersData = characters.map((char) => ({
-                    id: uuidv4(),
                     name: capitalizeWords(char.name),
                     image: char.img,
                 }));
@@ -53,9 +52,13 @@ const Main = () => {
         if (currScore > highScore) setHighScore(currScore);
     };
 
+    /**
+     * generating a new key for every rerender to force the render on every array item
+     * Reason: if only some items rerender only those items will have the scale animation
+     */
     const characterCards = characters.map((char) => (
         <Card
-            key={char.id}
+            key={uuidv4()}
             name={char.name}
             image={char.image}
             handleClick={handleCardClick}
