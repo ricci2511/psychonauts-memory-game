@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { fetchCharacters } from '../utils/APIUtils';
-import { shuffleArray } from '../utils/helpers';
+import { capitalizeWords, shuffleArray } from '../utils/helpers';
 import Card from './Card';
 import LoadingBrain from './LoadingBrain';
 import {
@@ -23,7 +23,7 @@ const Main = () => {
             try {
                 const characters = await fetchCharacters();
                 const charactersData = characters.map((char) => ({
-                    name: char.name,
+                    name: capitalizeWords(char.name),
                     image: char.img,
                 }));
                 setCharacters(shuffleArray(charactersData));
