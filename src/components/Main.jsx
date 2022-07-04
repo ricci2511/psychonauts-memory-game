@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { fetchCharacters } from '../utils/APIUtils';
 import { shuffleArray } from '../utils/helpers';
 import Card from './Card';
+import LoadingBrain from './LoadingBrain';
 import {
     CardsGrid,
     ScoreBox,
@@ -15,18 +16,25 @@ const Main = () => {
     const [clickedCharacters, setClickedCharacters] = useState([]);
     const [score, setScore] = useState(0);
     const [highScore, setHighScore] = useState(0);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const loadCharacters = async () => {
-            const characters = await fetchCharacters();
-            const charactersData = characters.map((char) => ({
-                name: char.name,
-                image: char.img,
-            }));
-            setCharacters(shuffleArray(charactersData));
+            try {
+                const characters = await fetchCharacters();
+                const charactersData = characters.map((char) => ({
+                    name: char.name,
+                    image: char.img,
+                }));
+                setCharacters(shuffleArray(charactersData));
+            } catch (err) {
+                console.error(err);
+            } finally {
+                setLoading(false);
+            }
         };
 
-        loadCharacters().catch(console.error);
+        loadCharacters();
     }, []);
 
     const resetGame = () => {
@@ -39,10 +47,10 @@ const Main = () => {
 
         if (clickedCharacters.includes(charName)) return resetGame();
 
+        setClickedCharacters((prevState) => [...prevState, charName]);
         const currScore = score + 1;
         setScore(currScore);
         if (currScore > highScore) setHighScore(currScore);
-        setClickedCharacters((prevState) => [...prevState, charName]);
     };
 
     const characterCards = characters.map((char) => (
@@ -60,6 +68,7 @@ const Main = () => {
                 <ScoreBox>Score: {score}</ScoreBox>
                 <ScoreBox>Best score: {highScore}</ScoreBox>
             </ScoresWrapper>
+            {loading && <LoadingBrain />}
             <CardsGrid>{characterCards}</CardsGrid>
         </StyledMain>
     );
