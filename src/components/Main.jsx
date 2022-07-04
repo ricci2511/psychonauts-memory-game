@@ -13,6 +13,7 @@ import {
 
 const Main = () => {
     const [characters, setCharacters] = useState([]);
+    // stores the names of the clicked characters
     const [clickedCharacters, setClickedCharacters] = useState([]);
     const [score, setScore] = useState(0);
     const [highScore, setHighScore] = useState(0);
@@ -23,6 +24,7 @@ const Main = () => {
             try {
                 const characters = await fetchCharacters();
                 const charactersData = characters.map((char) => ({
+                    id: uuidv4(),
                     name: capitalizeWords(char.name),
                     image: char.img,
                 }));
@@ -44,9 +46,7 @@ const Main = () => {
 
     const handleCardClick = (charName) => {
         setCharacters([...shuffleArray(characters)]);
-
         if (clickedCharacters.includes(charName)) return resetGame();
-
         setClickedCharacters((prevState) => [...prevState, charName]);
         const currScore = score + 1;
         setScore(currScore);
@@ -55,7 +55,7 @@ const Main = () => {
 
     const characterCards = characters.map((char) => (
         <Card
-            key={uuidv4()}
+            key={char.id}
             name={char.name}
             image={char.image}
             handleClick={handleCardClick}

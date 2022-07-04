@@ -38,6 +38,7 @@ export const ScoresWrapper = styled.article`
 export const ScoreBox = styled.div`
     width: min(100%, 12rem);
     background: rgba(24, 41, 11, 0.58);
+    background-color: #1e330e;
     border-radius: 5px;
     border: 2px solid yellow;
     color: white;
