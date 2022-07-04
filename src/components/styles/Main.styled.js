@@ -9,13 +9,21 @@ export const StyledMain = styled.main`
 
 export const CardsGrid = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 1fr;
     gap: 1.25rem;
     margin-top: 4rem;
 
-    @media (max-width: 540px) {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 568px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 368px) {
+        grid-template-columns: repeat(1, 1fr);
     }
 `;
 
