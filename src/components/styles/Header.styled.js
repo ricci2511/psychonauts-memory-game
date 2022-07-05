@@ -10,7 +10,7 @@ export const StyledHeader = styled.header`
 `;
 
 export const Logo = styled.img`
-    width: min(100%, 800px);
+    width: ${({ theme }) => theme.sizes.logoWidth};
 `;
 
 export const Brain = styled.img`

@@ -1,21 +1,22 @@
 import { createGlobalStyle } from 'styled-components';
-import waves from '../../assets/body-bg-waves.svg';
 
 const GlobalStyles = createGlobalStyle`
-    * {
+    *, *::before, *::after {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+        word-wrap: break-word;
+    }
+
+    /* makes footer stay at the bottom */
+    html {
+        position: relative;
+        min-height: 100%;
     }
 
     body {
-        position: relative;
-        min-height: 100vh;
-        background-image: url(${waves});
-        background-repeat: no-repeat;
-        background-position: top;
-        background-size: cover;
-        background-attachment: fixed;
+        background: ${({ theme }) => theme.colors.bodyFallback};
+        background: ${({ theme }) => theme.colors.body};
         font-family: 'Roboto', sans-serif;
     }
 

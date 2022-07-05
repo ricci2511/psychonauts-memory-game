@@ -8,7 +8,7 @@ export const StyledFooter = styled.footer`
     justify-content: center;
     width: 100%;
     padding: 1rem;
-    background-color: #039474;
+    background-color: ${({ theme }) => theme.colors.footer};
     font-weight: 700;
     font-size: 1.15rem;
     border-top: 2px solid black;
