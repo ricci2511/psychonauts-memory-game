@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { fetchCharacters } from '../utils/APIUtils';
 import { capitalizeWords, shuffleArray } from '../utils/helpers';
 import Card from './Card';
-import LoadingBrain from './LoadingBrain';
-import {
-    CardsGrid,
-    ScoreBox,
-    ScoresWrapper,
-    StyledMain,
-} from './styles/Main.styled';
+import Game from './Game';
+import Modal from './Modal';
+import { StyledMain } from './styles/Main.styled';
 
 const Main = () => {
     const [characters, setCharacters] = useState([]);
@@ -18,11 +14,16 @@ const Main = () => {
     const [score, setScore] = useState(0);
     const [highScore, setHighScore] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [showModal, setShowModal] = useState(true);
+    const [currentDifficulty, setCurrentDifficulty] = useState({});
+    const [isWinner, setIsWinner] = useState(false);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const loadCharacters = async () => {
             try {
-                const characters = await fetchCharacters();
+                setLoading(true);
+                // amount of fetched characters varies depending on the difficulty
+                const characters = await fetchCharacters(currentDifficulty);
                 const charactersData = characters.map((char) => ({
                     name: capitalizeWords(char.name),
                     image: char.img,
@@ -36,20 +37,45 @@ const Main = () => {
         };
 
         loadCharacters();
-    }, []);
+    }, [currentDifficulty]);
 
-    const resetGame = () => {
+    const resetRound = () => {
         setScore(0);
         setClickedCharacters([]);
     };
 
-    const handleCardClick = (charName) => {
-        setCharacters([...shuffleArray(characters)]);
-        if (clickedCharacters.includes(charName)) return resetGame();
+    const playRound = (charName) => {
+        if (clickedCharacters.includes(charName)) return resetRound();
         setClickedCharacters((prevState) => [...prevState, charName]);
         const currScore = score + 1;
         setScore(currScore);
         if (currScore > highScore) setHighScore(currScore);
+        if (currScore === currentDifficulty.maxScore) {
+            resetRound();
+            setIsWinner(true);
+            setShowModal(true);
+        }
+    };
+
+    const handleCardClick = (charName) => {
+        setCharacters([...shuffleArray(characters)]);
+        playRound(charName);
+    };
+
+    const handleDifficultyClick = (currentDifficulty) => {
+        let maxScore = 0;
+        if (currentDifficulty === 'Easy') {
+            maxScore = 4;
+        } else if (currentDifficulty === 'Medium') {
+            maxScore = 8;
+        } else {
+            maxScore = 12;
+        }
+        setCurrentDifficulty({
+            currentDifficulty: currentDifficulty,
+            maxScore: maxScore,
+        });
+        setShowModal(false);
     };
 
     /**
@@ -67,12 +93,20 @@ const Main = () => {
 
     return (
         <StyledMain>
-            <ScoresWrapper>
-                <ScoreBox>Score: {score}</ScoreBox>
-                <ScoreBox>Best score: {highScore}</ScoreBox>
-            </ScoresWrapper>
-            {loading && <LoadingBrain />}
-            <CardsGrid>{characterCards}</CardsGrid>
+            {showModal ? (
+                <Modal
+                    changeDifficulty={handleDifficultyClick}
+                    difficulty={currentDifficulty}
+                    isWinner={isWinner}
+                />
+            ) : (
+                <Game
+                    characterCards={characterCards}
+                    score={score}
+                    highScore={highScore}
+                    loading={loading}
+                />
+            )}
         </StyledMain>
     );
 };
