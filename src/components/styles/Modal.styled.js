@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+const psychonautsYellow = ({ theme }) => theme.colors.psychonautsYellow;
+
 export const StyledModal = styled.div`
     background-color: rgba(0, 0, 0, 0.7);
     height: 600px;
@@ -11,7 +13,8 @@ export const StyledModal = styled.div`
     gap: 2rem;
     border-radius: 5px;
     padding: 1rem;
-    box-shadow: #feee03 0px 1px 2px 0px, #feee03 0px 1px 3px 1px;
+    box-shadow: ${psychonautsYellow} 0px 1px 2px 0px,
+        ${psychonautsYellow} 0px 1px 3px 1px;
 
     /* winner text */
     p {
@@ -26,7 +29,7 @@ export const StyledModal = styled.div`
 export const ModalButton = styled.button`
     width: min(90%, 20rem);
     align-self: center;
-    background-color: hsl(340deg 100% 32%);
+    background-color: ${({ theme }) => theme.colors.darkerPink};
     border-radius: 12px;
     border: none;
     cursor: pointer;
@@ -36,7 +39,7 @@ export const ModalButton = styled.button`
         display: block;
         padding: 1rem 2rem;
         border-radius: inherit;
-        background-color: #fa6190;
+        background-color: ${({ theme }) => theme.colors.lighterPink};
         font-size: 1.25rem;
         font-weight: 700;
         color: white;

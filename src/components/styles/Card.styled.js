@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
+const cardHover = ({ theme }) => theme.colors.cardHover;
+
 export const StyledCard = styled.figure`
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: ${({ theme }) => theme.colors.transparentBlack};
     padding: 1rem 0rem;
     border-radius: 5px;
     display: flex;
@@ -13,8 +15,8 @@ export const StyledCard = styled.figure`
     animation: scale 500ms ease;
 
     img {
-        max-height: 220px;
-        max-width: 150px;
+        max-height: ${({ theme }) => theme.sizes.imgHeight};
+        max-width: ${({ theme }) => theme.sizes.imgWidth};
     }
 
     figcaption {
@@ -25,7 +27,7 @@ export const StyledCard = styled.figure`
 
     &:hover {
         transform: scale(1.02);
-        box-shadow: #00bbf1 0px 3px 18px 0px, #00bbf1 0px 0px 0px 1px;
+        box-shadow: ${cardHover} 0px 3px 18px 0px, ${cardHover} 0px 0px 0px 1px;
     }
 
     @keyframes scale {
