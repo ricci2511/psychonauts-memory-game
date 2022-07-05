@@ -31,6 +31,7 @@ export const ScoresWrapper = styled.section`
     margin-top: 2rem;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     gap: 1rem;
 `;
