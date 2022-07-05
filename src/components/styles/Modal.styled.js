@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const psychonautsYellow = ({ theme }) => theme.colors.psychonautsYellow;
+const lightBlue = ({ theme }) => theme.colors.cardHover;
 
 export const StyledModal = styled.div`
     background-color: rgba(0, 0, 0, 0.7);
@@ -13,8 +13,7 @@ export const StyledModal = styled.div`
     gap: 2rem;
     border-radius: 5px;
     padding: 1rem;
-    box-shadow: ${psychonautsYellow} 0px 1px 2px 0px,
-        ${psychonautsYellow} 0px 1px 3px 1px;
+    box-shadow: ${lightBlue} 0px 4px 8px -2px, ${lightBlue} 0px 0px 0px 1px;
 
     /* winner text */
     p {
