@@ -1,14 +1,13 @@
 {
   "files": {
-    "main.js": "/psychonauts-memory-game/static/js/main.408c2e88.js",
+    "main.js": "/psychonauts-memory-game/static/js/main.d9a5ff84.js",
     "static/media/logo.png": "/psychonauts-memory-game/static/media/logo.0a94db8ac4ffd0027dbb.png",
     "static/media/brain.webp": "/psychonauts-memory-game/static/media/brain.5abf149f3bdee81480f0.webp",
     "static/media/loading-brain.svg": "/psychonauts-memory-game/static/media/loading-brain.ca2582a999ed4eebe52261f5eb54a82e.svg",
-    "static/media/body-bg-waves.svg": "/psychonauts-memory-game/static/media/body-bg-waves.aaa1ac382faaee040adda103bed52bf5.svg",
     "index.html": "/psychonauts-memory-game/index.html",
-    "main.408c2e88.js.map": "/psychonauts-memory-game/static/js/main.408c2e88.js.map"
+    "main.d9a5ff84.js.map": "/psychonauts-memory-game/static/js/main.d9a5ff84.js.map"
   },
   "entrypoints": [
-    "static/js/main.408c2e88.js"
+    "static/js/main.d9a5ff84.js"
   ]
 }
