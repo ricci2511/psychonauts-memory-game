@@ -1,7 +1,5 @@
 # psychonauts-memory-game :brain:
-Simple memory card game to put your brain to the test!
-
-I might revisit this later and add different difficulties.
+Simple memory card game with three different difficulties to put your brain to the test!
 
 [Live Demo](http://ricci2511.github.io/psychonauts-memory-game/) :star2:
 
