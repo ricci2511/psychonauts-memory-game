@@ -1,8 +1,6 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { fetchCharacters } from '../utils/APIUtils';
 import { capitalizeWords, shuffleArray } from '../utils/helpers';
-import Card from './Card';
 import Game from './Game';
 import Modal from './Modal';
 import { StyledMain } from './styles/Main.styled';
@@ -78,19 +76,6 @@ const Main = () => {
         setShowModal(false);
     };
 
-    /**
-     * generating a new key for every rerender to force the render on every array item
-     * Reason: if only some items rerender only those items will have the scale animation
-     */
-    const characterCards = characters.map((char) => (
-        <Card
-            key={uuidv4()}
-            name={char.name}
-            image={char.image}
-            handleClick={handleCardClick}
-        />
-    ));
-
     return (
         <StyledMain>
             {showModal ? (
@@ -101,7 +86,8 @@ const Main = () => {
                 />
             ) : (
                 <Game
-                    characterCards={characterCards}
+                    characters={characters}
+                    handleCardClick={handleCardClick}
                     score={score}
                     highScore={highScore}
                     loading={loading}

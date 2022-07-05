@@ -1,5 +1,5 @@
 import React from 'react';
-import { ModalButton, StyledModal } from './styles/Modal.styled';
+import { ModalButton, StyledModal } from '../styles/Modal.styled';
 
 const Modal = ({ changeDifficulty, difficulty, isWinner }) => {
     return (

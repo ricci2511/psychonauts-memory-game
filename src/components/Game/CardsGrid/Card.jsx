@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledCard } from './styles/Card.styled';
+import { StyledCard } from '../../styles/Card.styled';
 
 const Card = ({ name, image, handleClick }) => {
     const altText = `Character ${name}`;
